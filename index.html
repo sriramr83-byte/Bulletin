@@ -13,11 +13,23 @@
         background: #f9f9f9;
     }
 
+    /* Header with logo on the left */
     header {
         background: linear-gradient(90deg, #2b6cb0, #f687b3, #ed8936); /* Blue → Pink → Orange */
         color: white;
-        padding: 20px;
-        text-align: center;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    header img.logo {
+        height: 50px; /* Logo height */
+        width: auto;
+        border-radius: 5px;
+    }
+
+    header span {
         font-size: 24px;
         font-weight: bold;
     }
@@ -67,12 +79,31 @@
     a.pdf-link:hover {
         background: #ed8936; /* Orange on hover */
     }
+
+    /* Responsive for small screens */
+    @media (max-width: 500px) {
+        header {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        header img.logo {
+            height: 40px;
+        }
+
+        header span {
+            font-size: 20px;
+        }
+    }
 </style>
 </head>
 <body>
 
 <header>
-    Mithila Apartment Bulletin
+    <!-- Place your logo.jpg in the same folder -->
+    <img class="logo" src="logo.jpg" alt="Mithila Logo">
+    <span>Mithila Apartment Bulletin</span>
 </header>
 
 <div class="container">
@@ -110,9 +141,9 @@
     <!-- Downloads -->
     <h2>📥 Downloads (PDFs)</h2>
     <div class="card">
-       <a class="pdf-link" href="maintenance-invoice.pdf" download>Maintenance Invoice Format</a>
-    <a class="pdf-link" href="society-bye-laws.pdf" download>Society Bye-Laws</a>
-    <a class="pdf-link" href="MOMMithila.pdf" download>AGM Minutes - 2025</a>
+        <a class="pdf-link" href="maintenance-invoice.pdf" download>Maintenance Invoice Format</a>
+        <a class="pdf-link" href="society-bye-laws.pdf" download>Society Bye-Laws</a>
+        <a class="pdf-link" href="agm-minutes-2025.pdf" download>AGM Minutes - 2025</a>
     </div>
 
 </div>
