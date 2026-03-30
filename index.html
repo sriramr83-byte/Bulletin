@@ -125,7 +125,7 @@
 <body>
 
 <script>
-    // Password protection
+window.onload = function() {
     const password = "mithila123"; // change this
     let attempt = prompt("Enter password to view the bulletin:");
 
@@ -134,6 +134,7 @@
     } else {
         document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Access Denied</h2>";
     }
+};
 </script>
 
 <div id="mainContent">
