@@ -32,7 +32,8 @@
         font-size: 24px;
         font-weight: bold;
     }
- /* Scrolling text */
+
+    /* Scrolling text */
     .marquee {
         background: #ed8936;
         color: white;
@@ -56,7 +57,7 @@
         margin: auto;
     }
 
-    /* Collapsible heading */
+    /* Collapsible headings */
     .collapsible {
         background-color: #2b6cb0;
         color: white;
@@ -84,23 +85,12 @@
         margin-bottom: 12px;
     }
 
-    .card {
+    .content .card {
         margin: 12px 0;
         background: white;
         padding: 15px;
         border-radius: 10px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .numbers p,
-    .notice p,
-    .rules li {
-        margin: 6px 0;
-        font-size: 16px;
-    }
-
-    .rules li {
-        line-height: 1.6;
     }
 
     a.pdf-link {
@@ -123,11 +113,6 @@
         header {
             flex-direction: column;
             text-align: center;
-            gap: 10px;
-        }
-
-        header img.logo {
-            height: 40px;
         }
 
         header span {
@@ -142,17 +127,19 @@
     <img class="logo" src="MithilaLogo.jpg" alt="Mithila Logo">
     <span>Mithila Apartment Bulletin</span>
 </header>
+
 <div class="marquee">AGM is on 04/20/2026</div>
+
 <div class="container">
 
     <!-- Important Numbers -->
     <button type="button" class="collapsible">📞 Important Numbers</button>
     <div class="content">
         <div class="card numbers">
-            <p><b>Security Gate:</b> 5001,5002</p>
-            <p><b>MST:</b> 9941013981</p>
-            <p><b>Facility Manager:</b> 8056260872</p>
-            <p><b>Hathway:</b> 9876543444</p>
+            <p><b>Security Gate:</b> 9876543210</p>
+            <p><b>Electrician:</b> 9876543222</p>
+            <p><b>Plumber:</b> 9876543333</p>
+            <p><b>Housekeeping:</b> 9876543444</p>
             <p><b>Association Office:</b> 9876543555</p>
         </div>
     </div>
@@ -161,23 +148,31 @@
     <button type="button" class="collapsible">📢 Latest Notices</button>
     <div class="content">
         <div class="card notice">
-            <p><b>Water Supply Shutdown:</b> 2 PM – 5 PM today for maintenance.</p>
-            <p><b>Lift-2:</b> Under maintenance until tomorrow morning.</p>
-            <p><b>Parking Reminder:</b> Please park only in your allotted slot.</p>
+            <p><b>Water Supply Shutdown:</b> 2 PM – 5 PM today.</p>
+            <p><b>Lift-2:</b> Under maintenance.</p>
+            <p><b>Parking:</b> Park only in your allotted slot.</p>
         </div>
     </div>
 
-    <!-- Rules / Highlights -->
+    <!-- Rules -->
     <button type="button" class="collapsible">📌 Rules & Highlights</button>
     <div class="content">
         <div class="card">
             <ul class="rules">
                 <li>Quiet hours: 10 PM – 6 AM</li>
-                <li>Waste segregation mandatory (Wet / Dry)</li>
-                <li>Pets must be on leash in common areas</li>
-                <li>No parking in fire lane zones</li>
+                <li>Waste segregation mandatory</li>
+                <li>Pets must be on leash</li>
+                <li>No parking in fire lane</li>
                 <li>Keep doors closed to prevent stray entry</li>
             </ul>
+        </div>
+    </div>
+
+    <!-- Important Links -->
+    <button type="button" class="collapsible">🔗 Important Links</button>
+    <div class="content">
+        <div class="card">
+            <p><a href="https://tnurbanepay.tn.gov.in/Watersupply_UgdSearch.aspx#" target="_blank">🏛️ Property Tax Payment</a></p>
         </div>
     </div>
 
@@ -190,26 +185,17 @@
             <a class="pdf-link" href="agm-minutes-2025.pdf" download>AGM Minutes - 2025</a>
         </div>
     </div>
- <!-- Important Links -->
-    <button type="button" class="collapsible">🔗 Important Links</button>
-        <div class="content">
-            <div class="card">
-                <p><a href="https://tnurbanepay.tn.gov.in/Watersupply_UgdSearch.aspx#" target="_blank">🏠 Property Tax – TN Urban ePay</a></p>
-            </div>
-        </div>
-     </div>
+
+</div>
 
 <script>
     // Collapsible functionality
     const collapsibles = document.querySelectorAll(".collapsible");
     collapsibles.forEach(button => {
         button.addEventListener("click", function() {
+            this.classList.toggle("active");
             const content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
+            content.style.display = content.style.display === "block" ? "none" : "block";
         });
     });
 </script>
