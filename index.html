@@ -13,9 +13,13 @@
         background: #f9f9f9;
     }
 
-    /* Header with logo on the left */
+    /* Hide main content initially for password protection */
+    #mainContent {
+        display: none;
+    }
+
     header {
-        background: linear-gradient(90deg, #2b6cb0, #f687b3, #ed8936); /* Blue → Pink → Orange */
+        background: linear-gradient(90deg, #2b6cb0, #f687b3, #ed8936);
         color: white;
         padding: 15px 20px;
         display: flex;
@@ -24,7 +28,7 @@
     }
 
     header img.logo {
-        height: 50px; /* Logo height */
+        height: 50px;
         width: auto;
         border-radius: 5px;
     }
@@ -40,17 +44,38 @@
         margin: auto;
     }
 
-    h2 {
-        color: #2b6cb0; /* Blue headings */
-        border-left: 5px solid #ed8936; /* Orange left border */
-        padding-left: 10px;
-        margin-top: 30px;
+    /* Collapsible headings */
+    .collapsible {
+        background-color: #2b6cb0;
+        color: white;
+        cursor: pointer;
+        padding: 12px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 18px;
+        border-radius: 5px;
+        margin-bottom: 8px;
     }
 
-    .card {
+    .collapsible:hover {
+        background-color: #1e4e8c;
+    }
+
+    .content {
+        padding: 0 15px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        margin-bottom: 12px;
+    }
+
+    .content .card {
+        margin: 12px 0;
         background: white;
         padding: 15px;
-        margin: 12px 0;
         border-radius: 10px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
@@ -66,7 +91,7 @@
 
     a.pdf-link {
         display: block;
-        background: #f687b3; /* Pink buttons */
+        background: #f687b3;
         color: white;
         padding: 10px;
         text-align: center;
@@ -77,10 +102,9 @@
     }
 
     a.pdf-link:hover {
-        background: #ed8936; /* Orange on hover */
+        background: #ed8936;
     }
 
-    /* Responsive for small screens */
     @media (max-width: 500px) {
         header {
             flex-direction: column;
@@ -100,53 +124,90 @@
 </head>
 <body>
 
+<script>
+    // Password protection
+    const password = "mithila123"; // change this
+    let attempt = prompt("Enter password to view the bulletin:");
+
+    if(attempt === password){
+        document.getElementById('mainContent').style.display = 'block';
+    } else {
+        document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Access Denied</h2>";
+    }
+</script>
+
+<div id="mainContent">
 <header>
-    <!-- Place your logo.jpg in the same folder -->
-    <img class="logo" src="MithilaLogo.jpg" alt="Mithila Logo">
+    <img class="logo" src="logo.jpg" alt="Mithila Logo">
     <span>Mithila Apartment Bulletin</span>
 </header>
 
 <div class="container">
 
     <!-- Important Numbers -->
-    <h2>📞 Important Numbers</h2>
-    <div class="card numbers">
-        <p><b>Security Gate:</b> 9876543210</p>
-        <p><b>Electrician:</b> 9876543222</p>
-        <p><b>Plumber:</b> 9876543333</p>
-        <p><b>Housekeeping:</b> 9876543444</p>
-        <p><b>Association Office:</b> 9876543555</p>
+    <button type="button" class="collapsible">📞 Important Numbers</button>
+    <div class="content">
+        <div class="card numbers">
+            <p><b>Security Gate:</b> 9876543210</p>
+            <p><b>Electrician:</b> 9876543222</p>
+            <p><b>Plumber:</b> 9876543333</p>
+            <p><b>Housekeeping:</b> 9876543444</p>
+            <p><b>Association Office:</b> 9876543555</p>
+        </div>
     </div>
 
     <!-- Latest Notices -->
-    <h2>📢 Latest Notices</h2>
-    <div class="card notice">
-        <p><b>Water Supply Shutdown:</b> 2 PM – 5 PM today for maintenance.</p>
-        <p><b>Lift-2:</b> Under maintenance until tomorrow morning.</p>
-        <p><b>Parking Reminder:</b> Please park only in your allotted slot.</p>
+    <button type="button" class="collapsible">📢 Latest Notices</button>
+    <div class="content">
+        <div class="card notice">
+            <p><b>Water Supply Shutdown:</b> 2 PM – 5 PM today for maintenance.</p>
+            <p><b>Lift-2:</b> Under maintenance until tomorrow morning.</p>
+            <p><b>Parking Reminder:</b> Please park only in your allotted slot.</p>
+        </div>
     </div>
 
     <!-- Rules / Highlights -->
-    <h2>📌 Rules & Highlights</h2>
-    <div class="card">
-        <ul class="rules">
-            <li>Quiet hours: 10 PM – 6 AM</li>
-            <li>Waste segregation mandatory (Wet / Dry)</li>
-            <li>Pets must be on leash in common areas</li>
-            <li>No parking in fire lane zones</li>
-            <li>Keep doors closed to prevent stray entry</li>
-        </ul>
+    <button type="button" class="collapsible">📌 Rules & Highlights</button>
+    <div class="content">
+        <div class="card">
+            <ul class="rules">
+                <li>Quiet hours: 10 PM – 6 AM</li>
+                <li>Waste segregation mandatory (Wet / Dry)</li>
+                <li>Pets must be on leash in common areas</li>
+                <li>No parking in fire lane zones</li>
+                <li>Keep doors closed to prevent stray entry</li>
+            </ul>
+        </div>
     </div>
 
     <!-- Downloads -->
-    <h2>📥 Downloads (PDFs)</h2>
-    <div class="card">
-        <a class="pdf-link" href="maintenance-invoice.pdf" download>Maintenance Invoice Format</a>
-        <a class="pdf-link" href="society-bye-laws.pdf" download>Society Bye-Laws</a>
-        <a class="pdf-link" href="MOMMithila.pdf" download>AGM Minutes - 2025</a>
+    <button type="button" class="collapsible">📥 Downloads (PDFs)</button>
+    <div class="content">
+        <div class="card">
+            <a class="pdf-link" href="maintenance-invoice.pdf" download>Maintenance Invoice Format</a>
+            <a class="pdf-link" href="society-bye-laws.pdf" download>Society Bye-Laws</a>
+            <a class="pdf-link" href="agm-minutes-2025.pdf" download>AGM Minutes - 2025</a>
+        </div>
     </div>
 
 </div>
+</div>
+
+<script>
+    // Collapsible functionality
+    const collapsibles = document.querySelectorAll(".collapsible");
+    collapsibles.forEach(button => {
+        button.addEventListener("click", function() {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            if(content.style.display === "block"){
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
