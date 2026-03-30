@@ -33,21 +33,26 @@
         font-weight: bold;
     }
 
-    /* Scrolling text */
+    /* FIXED Full-width marquee */
     .marquee {
         background: linear-gradient(90deg, #2b6cb0, #f687b3, #ed8936);
-        color: white;
         padding: 8px 0;
+        overflow: hidden;
+        position: relative;
+        white-space: nowrap;
+    }
+
+    .marquee span {
+        display: inline-block;
+        color: white;
         font-size: 18px;
         font-weight: bold;
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap;
+        padding-left: 100%;
         animation: scroll-left 12s linear infinite;
     }
 
     @keyframes scroll-left {
-        0% { transform: translateX(100%); }
+        0% { transform: translateX(0); }
         100% { transform: translateX(-100%); }
     }
 
@@ -57,7 +62,7 @@
         margin: auto;
     }
 
-    /* Collapsible headings */
+    /* Collapsible sections */
     .collapsible {
         background-color: #2b6cb0;
         color: white;
@@ -85,7 +90,7 @@
         margin-bottom: 12px;
     }
 
-    .content .card {
+    .card {
         margin: 12px 0;
         background: white;
         padding: 15px;
@@ -114,7 +119,6 @@
             flex-direction: column;
             text-align: center;
         }
-
         header span {
             font-size: 20px;
         }
@@ -128,12 +132,13 @@
     <span>Mithila Apartment Bulletin</span>
 </header>
 
-<div class="marquee">WELCOME TO MITHILA BULLETIN.TAP ON EACH SECTION TO FIND MORE INFO.THANKS</div>
+<!-- Updated marquee -->
+<div class="marquee"><span>WELCOME TO MITHILA BULLETIN — TAP ANY SECTION TO FIND MORE INFO — THANK YOU!</span></div>
 
 <div class="container">
 
     <!-- Important Numbers -->
-    <button type="button" class="collapsible">📞 Important Numbers</button>
+    <button class="collapsible">📞 Important Numbers</button>
     <div class="content">
         <div class="card numbers">
             <p><b>Security Gate:</b> 9876543210</p>
@@ -145,7 +150,7 @@
     </div>
 
     <!-- Latest Notices -->
-    <button type="button" class="collapsible">📢 Latest Notices</button>
+    <button class="collapsible">📢 Latest Notices</button>
     <div class="content">
         <div class="card notice">
             <p><b>Water Supply Shutdown:</b> 2 PM – 5 PM today.</p>
@@ -155,10 +160,10 @@
     </div>
 
     <!-- Rules -->
-    <button type="button" class="collapsible">📌 Rules & Highlights</button>
+    <button class="collapsible">📌 Rules & Highlights</button>
     <div class="content">
         <div class="card">
-            <ul class="rules">
+            <ul>
                 <li>Quiet hours: 10 PM – 6 AM</li>
                 <li>Waste segregation mandatory</li>
                 <li>Pets must be on leash</li>
@@ -169,17 +174,16 @@
     </div>
 
     <!-- Important Links -->
-    <button type="button" class="collapsible">🔗 Important Links</button>
+    <button class="collapsible">🔗 Important Links</button>
     <div class="content">
         <div class="card">
             <p><a href="https://tnurbanepay.tn.gov.in/Watersupply_UgdSearch.aspx#" target="_blank">🏛️ Property Tax Payment</a></p>
-            <p><a href="https://www.tnebnet.org/awp/login?locale=ta" target="_blank">🏛️ TNEB Payment</a></p>
-            
+            <p><a href="https://www.tnebnet.org/awp/login?locale=ta" target="_blank">💡 TNEB Electricity Bill</a></p>
         </div>
     </div>
 
     <!-- Downloads -->
-    <button type="button" class="collapsible">📥 Downloads (PDFs)</button>
+    <button class="collapsible">📥 Downloads (PDFs)</button>
     <div class="content">
         <div class="card">
             <a class="pdf-link" href="maintenance-invoice.pdf" download>Maintenance Invoice Format</a>
@@ -192,10 +196,8 @@
 
 <script>
     // Collapsible functionality
-    const collapsibles = document.querySelectorAll(".collapsible");
-    collapsibles.forEach(button => {
-        button.addEventListener("click", function() {
-            this.classList.toggle("active");
+    document.querySelectorAll(".collapsible").forEach(btn => {
+        btn.addEventListener("click", function() {
             const content = this.nextElementSibling;
             content.style.display = content.style.display === "block" ? "none" : "block";
         });
