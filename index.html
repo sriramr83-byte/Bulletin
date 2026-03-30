@@ -32,6 +32,23 @@
         font-size: 24px;
         font-weight: bold;
     }
+ /* Scrolling text */
+    .marquee {
+        background: #ed8936;
+        color: white;
+        padding: 8px 0;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: scroll-left 12s linear infinite;
+    }
+
+    @keyframes scroll-left {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
 
     .container {
         padding: 20px;
@@ -132,10 +149,10 @@
     <button type="button" class="collapsible">📞 Important Numbers</button>
     <div class="content">
         <div class="card numbers">
-            <p><b>Security Gate:</b> 9876543210</p>
-            <p><b>Electrician:</b> 9876543222</p>
-            <p><b>Plumber:</b> 9876543333</p>
-            <p><b>Housekeeping:</b> 9876543444</p>
+            <p><b>Security Gate:</b> 5001,5002</p>
+            <p><b>MST:</b> 9941013981</p>
+            <p><b>Facility Manager:</b> 8056260872</p>
+            <p><b>Hathway:</b> 9876543444</p>
             <p><b>Association Office:</b> 9876543555</p>
         </div>
     </div>
